@@ -1,4 +1,0 @@
-﻿  main.cpp
-C:\Users\mahin\source\repos\SDL Simple\SDL Simple\main.cpp(23,28): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-C:\Users\mahin\source\repos\SDL Simple\SDL Simple\main.cpp(24,15): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-  SDL Simple.vcxproj -> C:\Users\mahin\source\repos\SDL Simple\Debug\SDL Simple.exe
