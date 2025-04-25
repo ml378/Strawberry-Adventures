@@ -1,0 +1,5 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (hw3.vcxproj, hw4.vcxproj, SDL Simple.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  StrawberryMine.cpp
+C:\Users\mahin\source\repos\hw5\hw5\StrawberryMine.cpp(34,15): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
+C:\Users\mahin\source\repos\hw5\hw5\StrawberryMine.cpp(74,16): warning C4244: '-=': conversion from 'float' to 'Uint32', possible loss of data
+  hw5.vcxproj -> C:\Users\mahin\source\repos\hw5\Debug\hw5.exe

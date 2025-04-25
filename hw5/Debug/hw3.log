@@ -1,0 +1,7 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SDL Simple.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+C:\Users\mahin\source\repos\hw3\hw3\main.cpp(312,34): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+C:\Users\mahin\source\repos\hw3\hw3\main.cpp(333,34): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+C:\Users\mahin\source\repos\hw3\hw3\main.cpp(346,34): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+C:\Users\mahin\source\repos\hw3\hw3\main.cpp(358,34): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+  hw3.vcxproj -> C:\Users\mahin\source\repos\hw3\Debug\hw3.exe
