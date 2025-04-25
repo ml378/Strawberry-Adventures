@@ -39,7 +39,7 @@
 #include "Win.h"
 #include "StrawberryMine.h"
 
-// ————— CONSTANTS ————— //
+// â€”â€”â€”â€”â€” CONSTANTS â€”â€”â€”â€”â€” //
 constexpr int WINDOW_WIDTH = 700,
 WINDOW_HEIGHT = 560;
 
@@ -62,7 +62,7 @@ constexpr float MILLISECONDS_IN_SECOND = 1000.0;
 
 enum AppStatus { RUNNING, TERMINATED };
 
-// ————— GLOBAL VARIABLES ————— //
+// â€”â€”â€”â€”â€” GLOBAL VARIABLES â€”â€”â€”â€”â€” //
 Scene* g_current_scene;
 Scene* g_menu;
 Scene* g_loss;
@@ -99,7 +99,7 @@ void shutdown();
 
 void initialise()
 {
-    // ————— VIDEO ————— //
+    // â€”â€”â€”â€”â€” VIDEO â€”â€”â€”â€”â€” //
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     g_display_window = SDL_CreateWindow("Strawberry Adventures",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -117,7 +117,7 @@ void initialise()
     glewInit();
 #endif
 
-    // ————— GENERAL ————— //
+    // â€”â€”â€”â€”â€” GENERAL â€”â€”â€”â€”â€” //
     glViewport(VIEWPORT_X, VIEWPORT_Y, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
 
     g_shader_program.load(V_SHADER_PATH, F_SHADER_PATH);
@@ -145,13 +145,13 @@ void initialise()
     g_loss = create_loss_scene();
     g_win = create_win_scene();
 
-    // ————— LEVEL SETUP ————— //
+    // â€”â€”â€”â€”â€” LEVEL SETUP â€”â€”â€”â€”â€” //
     g_level_a = new LevelA();
     g_level_b = new LevelB();
     g_level_c = new LevelC();
     g_strawberrymine = new StrawberryMine();
 
-    // ————— BLENDING ————— //
+    // â€”â€”â€”â€”â€” BLENDING â€”â€”â€”â€”â€” //
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -170,9 +170,9 @@ void process_input()
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
-        // ————— KEYSTROKES ————— //
+        // â€”â€”â€”â€”â€” KEYSTROKES â€”â€”â€”â€”â€” //
         switch (event.type) {
-            // ————— END GAME ————— //
+            // â€”â€”â€”â€”â€” END GAME â€”â€”â€”â€”â€” //
         case SDL_QUIT:
         case SDL_WINDOWEVENT_CLOSE:
             g_app_status = TERMINATED;
@@ -211,7 +211,7 @@ void process_input()
         }
     }
 
-    // ————— KEY HOLD ————— //
+    // â€”â€”â€”â€”â€” KEY HOLD â€”â€”â€”â€”â€” //
     const Uint8* key_state = SDL_GetKeyboardState(NULL);
 
     if (g_current_scene->get_state().player != nullptr) {
@@ -226,7 +226,6 @@ void process_input()
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         int mouse_x, mouse_y;
         SDL_GetMouseState(&mouse_x, &mouse_y);
-
         glm::vec2 mouse_pos = Utility::pos_coords(mouse_x, mouse_y, WINDOW_WIDTH, WINDOW_HEIGHT, g_view_matrix, g_projection_matrix);
 
         g_strawberrymine->click(mouse_pos.x, mouse_pos.y);
@@ -235,7 +234,7 @@ void process_input()
 
 void update()
 {
-    // ————— DELTA TIME / FIXED TIME STEP CALCULATION ————— //
+    // â€”â€”â€”â€”â€” DELTA TIME / FIXED TIME STEP CALCULATION â€”â€”â€”â€”â€” //
     float ticks = (float)SDL_GetTicks() / MILLISECONDS_IN_SECOND;
     float delta_time = ticks - g_previous_ticks;
     g_previous_ticks = ticks;
@@ -249,7 +248,7 @@ void update()
     }
 
     while (delta_time >= FIXED_TIMESTEP) {
-        // ————— UPDATING THE SCENE (i.e. map, character, enemies...) ————— //
+        // â€”â€”â€”â€”â€” UPDATING THE SCENE (i.e. map, character, enemies...) â€”â€”â€”â€”â€” //
         g_current_scene->update(FIXED_TIMESTEP);
 
         delta_time -= FIXED_TIMESTEP;
@@ -258,7 +257,7 @@ void update()
     g_accumulator = delta_time;
 
 
-    // ————— PLAYER CAMERA ————— //
+    // â€”â€”â€”â€”â€” PLAYER CAMERA â€”â€”â€”â€”â€” //
 
     if (g_current_scene->get_state().player != nullptr) {
         glm::vec3 player_pos = g_current_scene->get_state().player->get_position();
@@ -281,7 +280,7 @@ void update()
     }
 
 
-    // ————— LEVEL PROGRESSION ————— //
+    // â€”â€”â€”â€”â€” LEVEL PROGRESSION â€”â€”â€”â€”â€” //
     if (g_current_scene == g_level_a && g_level_a->is_complete()) {
         g_player_lives = g_current_scene->get_state().lives;
         g_current_scene = g_level_b;
@@ -330,7 +329,7 @@ void render()
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // ————— RENDERING THE SCENE (i.e. map, character, enemies...) ————— //
+    // â€”â€”â€”â€”â€” RENDERING THE SCENE (i.e. map, character, enemies...) â€”â€”â€”â€”â€” //
     g_current_scene->render(&g_shader_program);
 
     SDL_GL_SwapWindow(g_display_window);
@@ -340,13 +339,13 @@ void shutdown()
 {
     SDL_Quit();
 
-    // ————— DELETING LEVEL A DATA (i.e. map, character, enemies...) ————— //
+    // â€”â€”â€”â€”â€” DELETING LEVEL A DATA (i.e. map, character, enemies...) â€”â€”â€”â€”â€” //
     delete g_level_a;
     delete g_level_b;
     delete g_level_c;
 }
 
-// ————— GAME LOOP ————— //
+// â€”â€”â€”â€”â€” GAME LOOP â€”â€”â€”â€”â€” //
 int main(int argc, char* argv[])
 {
     initialise();
