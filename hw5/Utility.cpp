@@ -137,12 +137,12 @@ void Utility::render_background(ShaderProgram* program, GLuint texture_id) {
 
 glm::vec2 Utility::pos_coords(int pos_x, int pos_y, int width, int height,
     const glm::mat4& view_matrix, const glm::mat4& projection_matrix) {
-    float x_ndc = (2.0f * pos_x) / width - 1.0f;
-    float y_ndc = 1.0f - (2.0f * pos_y) / height;
+    float x = (2.0f * pos_x) / width - 1.0f;
+    float y = 1.0f - (2.0f * pos_y) / height;
 
-    glm::vec4 clip_coords = glm::vec4(x_ndc, y_ndc, 0.0f, 1.0f);
+    glm::vec4 coords = glm::vec4(x, y, 0.0f, 1.0f);
     glm::mat4 inv = glm::inverse(projection_matrix * view_matrix);
-    glm::vec4 mouse_coords = inv * clip_coords;
+    glm::vec4 mouse_coords = inv * coords;
 
     return glm::vec2(mouse_coords.x, mouse_coords.y);
 }
