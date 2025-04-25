@@ -31,16 +31,10 @@ void Map::build()
             if (m_uv_coords.find(tile_id) == m_uv_coords.end()) continue;
 
             TileUV uv = m_uv_coords[tile_id];
-
-            /*float x_offset = x * m_tile_size;
-            float y_offset = -y * m_tile_size;*/
-            /*float x_offset = x_origin + (x * m_tile_size);
-            float y_offset = y_origin - (y * m_tile_size);  */// Keep going down
+            
             float x_offset = x_origin + (x * m_tile_size);
-            //float y_offset = y_origin + (y * m_tile_size);
             float y_offset = y_origin - (y * m_tile_size);
 
-            // Vertices
             m_vertices.insert(m_vertices.end(), {
                 x_offset, y_offset,
                 x_offset + m_tile_size, y_offset,
@@ -49,8 +43,7 @@ void Map::build()
                 x_offset + m_tile_size, y_offset - m_tile_size,
                 x_offset, y_offset - m_tile_size
                 });
-
-            // Texture coordinates using custom UVs
+            
             m_texture_coordinates.insert(m_texture_coordinates.end(), {
                 uv.u, uv.v,
                 uv.u + uv.w, uv.v,
